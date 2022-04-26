@@ -1,3 +1,5 @@
+package com.kurtwall;
+
 public class Car extends Vehicle {
 
     private int wheels;

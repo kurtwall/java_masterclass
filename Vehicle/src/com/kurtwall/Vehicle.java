@@ -1,3 +1,5 @@
+package com.kurtwall;
+
 public class Vehicle {
 
     private String name;

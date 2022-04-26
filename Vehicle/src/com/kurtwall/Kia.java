@@ -1,3 +1,5 @@
+package com.kurtwall;
+
 public class Kia extends Car {
     private int roadServiceMonths;
 
