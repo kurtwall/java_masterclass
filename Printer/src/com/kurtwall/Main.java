@@ -3,15 +3,13 @@ package com.kurtwall;
 public class Main {
 
     public static void main(String[] args) {
-        Printer printer = new Printer(75, 100, true);
-        System.out.println("Pages printed: " + printer.getPagesPrinted());
-        printer.printPages(9);
-        System.out.println("Pages printed: " + printer.getPagesPrinted());
-
-        System.out.println("Toner level: " + printer.getTonerLevel());
-        printer.refillToner(50);
-        printer.refillToner(25);
-        System.out.println("Toner level: " + printer.getTonerLevel());
+        Printer printer = new Printer(50, true);
+        System.out.println(printer.addToner(50));
+        System.out.println("initial page count = " + printer.getPagesPrinted());
+        int pagesPrinted = printer.printPages(4);
+        System.out.println("Pages printed was " + pagesPrinted + " new total print count for printer = " + printer.getPagesPrinted());
+        pagesPrinted = printer.printPages(2);
+        System.out.println("Pages printed was " + pagesPrinted + " new total print count for printer = " + printer.getPagesPrinted());
 
     }
 }

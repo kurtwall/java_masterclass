@@ -2,45 +2,42 @@ package com.kurtwall;
 
 public class Printer {
     private int tonerLevel;
-    private int pagesPrinted;
-    private boolean isDuplex;
+    private int pagesPrinted = 0;
+    private boolean duplex;
 
-    public Printer(int tonerLevel, int pagesPrinted, boolean isDuplex) {
-        if (this.tonerLevel >= 0 && this.tonerLevel <= 100) {
+    public Printer(int tonerLevel, boolean duplex) {
+        if (this.tonerLevel > 0 && this.tonerLevel <= 100) {
             this.tonerLevel = tonerLevel;
         } else {
-            this.tonerLevel = 0;
-            System.out.println("Toner level cannot be more than 100%");
+            this.tonerLevel = -1;
         }
-        this.pagesPrinted = pagesPrinted;
-        this.isDuplex = isDuplex;
+        this.duplex = duplex;
     }
 
-    public void refillToner(int amount) {
-        if (this.tonerLevel + amount > 100 || amount < 1) {
-            System.out.println("Fill amount should be at least 1 and no more than " + (100 - this.tonerLevel));
+    public int addToner(int tonerAmount) {
+        if (tonerAmount > 0 && tonerAmount <= 100) {
+            if (this.tonerLevel + tonerAmount <= 100) {
+                this.tonerLevel += tonerAmount;
+            } else {
+                return -1;
+            }
         } else {
-            this.tonerLevel += amount;
+            return -1;
         }
+        return this.tonerLevel;
     }
 
-    public void printPages(int pages) {
-        if (this.isDuplex) {
-            this.pagesPrinted += (pages / 2) + (pages % 2);
-        } else {
-            this.pagesPrinted += pages;
+    public int printPages(int pages) {
+        int pagesToPrint = pages;
+        if (this.duplex) {
+            System.out.println("Printing in duplex mode");
+            pagesToPrint = (pages / 2) + (pages % 2);
         }
-    }
-
-    public int getTonerLevel() {
-        return tonerLevel;
+        this.pagesPrinted += pagesToPrint;
+        return pagesToPrint;
     }
 
     public int getPagesPrinted() {
-        return pagesPrinted;
-    }
-
-    public boolean isDuplex() {
-        return isDuplex;
+        return this.pagesPrinted;
     }
 }
