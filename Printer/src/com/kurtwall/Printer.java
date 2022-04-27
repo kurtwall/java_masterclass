@@ -26,7 +26,7 @@ public class Printer {
 
     public void printPages(int pages) {
         if (this.isDuplex) {
-            this.pagesPrinted += pages / 2;
+            this.pagesPrinted += (pages / 2) + (pages % 2);
         } else {
             this.pagesPrinted += pages;
         }
