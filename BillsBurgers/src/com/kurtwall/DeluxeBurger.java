@@ -1,29 +1,29 @@
 package com.kurtwall;
 
 public class DeluxeBurger extends Hamburger {
-    public DeluxeBurger(String name, String bunType, String meatType, double basePrice) {
-        super(name, bunType, meatType, basePrice);
-        super.addIngredient1("Chips", 0.75);
-        super.addIngredient2("Soda", 1.00);
+    public DeluxeBurger() {
+        super("Deluxe", "Elk", 19.10, "Ciabatta");
+        super.addHamburgerAddition1("Chips", 0);
+        super.addHamburgerAddition2("Soda", 0);
     }
 
     @Override
-    public void addIngredient1(String name, double price) {
+    public void addHamburgerAddition1(String name, double price) {
         System.out.println("Cannot add ingredients to the Deluxe Burger");
     }
 
     @Override
-    public void addIngredient2(String name, double price) {
+    public void addHamburgerAddition2(String name, double price) {
         System.out.println("Cannot add ingredients to the Deluxe Burger");
     }
 
     @Override
-    public void addIngredient3(String name, double price) {
+    public void addHamburgerAddition3(String name, double price) {
         System.out.println("Cannot add ingredients to the Deluxe Burger");
     }
 
     @Override
-    public void addIngredient4(String name, double price) {
+    public void addHamburgerAddition4(String name, double price) {
         System.out.println("Cannot add ingredients to the Deluxe Burger");
     }
 }

@@ -1,39 +1,28 @@
 package com.kurtwall;
 
 public class HealthyBurger extends Hamburger {
-    private String additional5;
-    private double additional5Price;
+    private String healthyExtra1Name;
+    private double healthyExtra1Price;
 
-    private String additional6;
-    private double additional6Price;
+    private String healthyExtra2Name;
+    private double healthyExtra2Price;
 
-    public HealthyBurger(String name, String meatType, double basePrice) {
-        super(name, "Brown Rye Roll", meatType, basePrice);
+    public HealthyBurger(String meat, double price) {
+        super("Healthy", meat, price, "Brown Rye Roll");
     }
 
-    public void addIngredient5(String name, double price) {
-        this.additional5 = name;
-        this.additional5Price = price;
-        System.out.printf("Added %s for $%.2f\n", name, price);
+    public void addHealthyAddition1(String name, double price) {
+        healthyExtra1Name = name;
+        healthyExtra1Price = price;
     }
 
-    public void addIngredient6(String name, double price) {
-        this.additional6 = name;
-        this.additional6Price = price;
-        System.out.printf("Added %s for $%.2f\n", name, price);
+    public void addHealthyAddition2(String name, double price) {
+        healthyExtra2Name = name;
+        healthyExtra2Price = price;
     }
 
     @Override
-    public double itemizeBurger() {
-        double burgerPrice = super.itemizeBurger();
-
-        if (this.additional5 != null) {
-            burgerPrice += this.additional5Price;
-        }
-        if (this.additional6 != null) {
-            burgerPrice += this.additional6Price;
-        }
-
-        return burgerPrice;
+    public double itemizeHamburger() {
+        return super.itemizeHamburger() + healthyExtra1Price + healthyExtra2Price;
     }
 }
