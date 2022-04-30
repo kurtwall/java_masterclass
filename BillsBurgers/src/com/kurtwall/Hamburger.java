@@ -4,97 +4,66 @@ public class Hamburger {
     private String name;
     private String bunType;
     private String meatType;
-    private boolean hasLettuce = false;
-    private boolean hasTomato = false;
-    private boolean hasOnion = false;
-    private boolean hasPickle = false;
-    private double basePrice = 0;
-    private int extrasCount = 0;
-    private double extrasCost = 0;
+    private double basePrice;
+
+    private String additional1;
+    private double additional1Price;
+
+    private String additional2;
+    private double additional2Price;
+
+    private String additional3;
+    private double additional3Price;
+
+    private String additional4;
+    private double additional4Price;
 
     public Hamburger(String name, String bunType, String meatType, double basePrice) {
         this.name = name;
         this.bunType = bunType;
         this.meatType = meatType;
         this.basePrice = basePrice;
+        System.out.printf("%s: %s on %s\n", this.name, this.meatType, this.bunType);
     }
 
-    public void setHasLettuce() {
-        this.hasLettuce = true;
-        this.addExtraIngredient(0.25);
+    public void addIngredient1(String name, double price) {
+        this.additional1 = name;
+        this.additional1Price = price;
+        System.out.printf("Added %s for $%.2f\n", name, price);
     }
 
-    public void setHasTomato() {
-        this.hasTomato = true;
-        this.addExtraIngredient(0.25);
+    public void addIngredient2(String name, double price) {
+        this.additional2 = name;
+        this.additional2Price = price;
+        System.out.printf("Added %s for $%.2f\n", name, price);
     }
 
-    public void setHasOnion() {
-        this.hasOnion = true;
-        this.addExtraIngredient(0.25);
+    public void addIngredient3(String name, double price) {
+        this.additional3 = name;
+        this.additional3Price = price;
+        System.out.printf("Added %s for $%.2f\n", name, price);
     }
 
-    public void setHasPickle() {
-        this.hasPickle = true;
-        this.addExtraIngredient(0.25);
+    public void addIngredient4(String name, double price) {
+        this.additional4 = name;
+        this.additional4Price = price;
+        System.out.printf("Added %s for $%.2f\n", name, price);
     }
 
-    public void addExtraIngredient(double amount) {
-        this.extrasCost += amount;
-        this.extrasCount++;
+    public double itemizeBurger() {
+        double addonsPrice = 0;
+        if (this.additional1 != null) {
+            addonsPrice += this.additional1Price;
+        }
+        if (this.additional2 != null) {
+            addonsPrice += this.additional2Price;
+        }
+        if (this.additional3 != null) {
+            addonsPrice += this.additional3Price;
+        }
+        if (this.additional4 != null) {
+            addonsPrice += this.additional4Price;
+        }
+        return this.basePrice + addonsPrice;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getBunType() {
-        return bunType;
-    }
-
-    public String getMeatType() {
-        return meatType;
-    }
-
-    public boolean hasLettuce() {
-        return hasLettuce;
-    }
-
-    public boolean hasTomato() {
-        return hasTomato;
-    }
-
-    public boolean hasOnion() {
-        return hasOnion;
-    }
-
-    public boolean hasPickle() {
-        return hasPickle;
-    }
-
-    public double getBasePrice() {
-        return basePrice;
-    }
-
-    public int getExtrasCount() {
-        return extrasCount;
-    }
-
-    public double getExtrasCost() {
-        return extrasCost;
-    }
-
-    public void describeBurger() {
-        System.out.println("**********");
-        System.out.println(this.name);
-        System.out.println(this.meatType + " on " + this.bunType);
-        System.out.println("Lettuce: " + this.hasLettuce);
-        System.out.println("Tomato: " + this.hasTomato);
-        System.out.println("Onion: " + this.hasOnion);
-        System.out.println("Pickle: " + this.hasPickle);
-        System.out.printf("Price:  $%.2f\n", this.basePrice);
-        System.out.printf("Extras: $%.2f\n", this.extrasCost);
-        System.out.printf("Total:  $%.2f\n", (this.basePrice + this.extrasCost));
-    }
-
 }
