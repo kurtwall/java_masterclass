@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        int[] intArray = getIntegers(7);
+        int[] intArray = getIntegers(5);
         int[] sortedArray = sortIntegers(intArray);
         printArray(sortedArray);
     }
