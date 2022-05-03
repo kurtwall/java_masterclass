@@ -1,5 +1,6 @@
 package com.kurtwall;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -13,8 +14,13 @@ public class Main {
         printInstructions();
         while (!quit) {
             System.out.print("Choice: ");
-            choice = scanner.nextInt();
-            scanner.nextLine();
+            try {
+                choice = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException e) {
+                scanner.nextLine();
+                continue;
+            }
             switch (choice) {
                 case 0:
                     printInstructions();
@@ -58,28 +64,26 @@ public class Main {
     }
 
     public static void modifyItem() {
-        System.out.print("Enter item number to modify: ");
-        int itemNum = scanner.nextInt();
-        scanner.nextLine();
+        System.out.print("Enter item to modify: ");
+        String item = scanner.nextLine();
         System.out.print("Enter modification: ");
         String newItem = scanner.nextLine();
-        groceryList.modifyGroceryItem(itemNum - 1, newItem);
+        groceryList.modifyGroceryItem(item, newItem);
     }
 
     public static void removeItem() {
-        System.out.print("Enter item number to remove: ");
-        int itemNum = scanner.nextInt();
-        scanner.nextLine();
-        groceryList.removeGroceryItem(itemNum - 1);
+        System.out.print("Enter item to remove: ");
+        String item = scanner.nextLine();
+        groceryList.removeGroceryItem(item);
     }
 
     public static void searchForItem() {
         System.out.print("Enter item to find: ");
-        String item = scanner.nextLine();
-        if (groceryList.findItem(item) != null) {
-            System.out.println("Found " + item + " on grocery list");
+        String searchItem = scanner.nextLine();
+        if (groceryList.onList(searchItem)) {
+            System.out.println(searchItem + " not on grocery list");
         } else {
-            System.out.println(item + " not on grocery list");
+            System.out.println("Found " + searchItem + " on grocery list");
         }
     }
 }
