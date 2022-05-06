@@ -2,9 +2,37 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MobilePhone {
+
+    public class Main {
+        public void main(String[] args) {
+            while (true) {
+                boolean shouldQuit = false;
+                printInstructions();
+                int choice = sc.nextInt();
+                sc.nextLine();
+
+                switch(choice) {
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                }
+            }
+        }
+    }
+
     ArrayList<Contact> contacts;
     Scanner sc = new Scanner(System.in);
 
+    public void printInstructions() {
+        System.out.println("0: Show contacts");
+        System.out.println("1: Add contact");
+        System.out.println("2: Edit contact");
+        System.out.println("3: Delete contact");
+        System.out.println("4: Find contact");
+        System.out.println("5: Quit");
+    }
     public void addContact() {
         System.out.print("Enter name: ");
         String name = sc.nextLine();
@@ -24,6 +52,26 @@ public class MobilePhone {
             contacts.remove(position);
         } else {
             System.out.println("Contact " + name + " not found");
+        }
+    }
+
+    public void updateContact() {
+
+    }
+
+    public void printContactList() {
+
+    }
+
+    public ArrayList<Contact> getContactList() {
+        return contacts;
+    }
+
+    public Contact findContact(String name) {
+        if (contacts.contains(name)) {
+            return contacts[contacts.indexOf(name);
+        } else {
+            return null;
         }
     }
 }

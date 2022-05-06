@@ -55,7 +55,7 @@ public class Main {
         System.out.println("\t 4 - To remove an item from the list.");
         System.out.println("\t 5 - To search for an item in the list.");
         System.out.println("\t 6 - To process item in the list.");
-        System.out.println("\t 6 - To quit the application.");
+        System.out.println("\t 7 - To quit the application.");
     }
 
     public static void addItem() {
@@ -65,10 +65,10 @@ public class Main {
 
     public static void modifyItem() {
         System.out.print("Current item name: ");
-        String itemNo = scanner.nextLine();
+        String oldItem = scanner.nextLine();
         System.out.print("Enter new item: ");
         String newItem = scanner.nextLine();
-        groceryList.modifyGroceryItem(itemNo, newItem);
+        groceryList.modifyGroceryItem(oldItem, newItem);
     }
 
     public static void removeItem() {
@@ -88,11 +88,14 @@ public class Main {
     }
 
     public static void processArrayList() {
+        // Another way to copy an ArrayList
         ArrayList<String> newArray = new ArrayList<String>();
         newArray.addAll(groceryList.getGroceryList());
 
+        // Yet another way to copy an ArrayList
         ArrayList<String> nextArray = new ArrayList<String>(groceryList.getGroceryList());
 
+        // Convert ArrayList to a plain vanilla Array
         String[] myArray = new String[groceryList.getGroceryList().size()];
         myArray = groceryList.getGroceryList().toArray(myArray);
 
