@@ -1,128 +1,117 @@
 package com.kurtwall;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static GroceryList groceryList = new GroceryList();
+    private static MobilePhone mobilePhone = new MobilePhone("867-5309");
 
     public static void main(String[] args) {
         boolean quit = false;
-        int choice = 0;
+        int choice;
 
-        printInstructions();
-        while (!quit) {
-            System.out.print("Enter your choice: ");
+        do {
+            printInstructions();
             choice = scanner.nextInt();
             scanner.nextLine();
-
             switch (choice) {
                 case 0:
-                    printInstructions();
-                    break;
-                case 1:
-                    groceryList.printGroceryList();
-                    break;
-                case 2:
-                    addItem();
-                    break;
-                case 3:
-                    modifyItem();
-                    break;
-                case 4:
-                    removeItem();
-                    break;
-                case 5:
-                    searchForItem();
-                    break;
-                case 6:
-                    processArrayList();
-                case 7:
                     quit = true;
                     break;
+                case 1:
+                    mobilePhone.printContacts();
+                    break;
+                case 2:
+                    addContact();
+                    break;
+                case 3:
+                    updateContact();
+                    break;
+                case 4:
+                    deleteContact();
+                    break;
+                case 5:
+                    findContact();
+                    break;
+                case 6:
+                    printInstructions();
+                    break;
+                default:
+                    System.out.println("Unrecognized choice: " + choice);
+                    break;
             }
-        }
+        } while (quit == false);
     }
 
-    public static void printInstructions() {
-        System.out.println("\nPress ");
-        System.out.println("\t 0 - To print instructions.");
-        System.out.println("\t 1 - To print the list of grocery items.");
-        System.out.println("\t 2 - To add an item to the list.");
-        System.out.println("\t 3 - To modify an item in the list.");
-        System.out.println("\t 4 - To remove an item from the list.");
-        System.out.println("\t 5 - To search for an item in the list.");
-        System.out.println("\t 6 - To process item in the list.");
-        System.out.println("\t 7 - To quit the application.");
+    private static void printInstructions() {
+        System.out.println("0: Quit");
+        System.out.println("1: List Contacts");
+        System.out.println("2: Add Contact");
+        System.out.println("3: Update Contact");
+        System.out.println("4: Remove Contact");
+        System.out.println("5: Find Contact");
+        System.out.println("6: Show these options");
+        System.out.print("\nEnter choice: ");
     }
 
-    public static void addItem() {
-        System.out.print("Please enter the grocery item: ");
-        groceryList.addGroceryItem(scanner.nextLine());
-    }
+    private static void addContact() {
+        System.out.print("Enter contact name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter contact number: ");
+        String number = scanner.nextLine();
+        Contact contact = Contact.createContact(name, number);
 
-    public static void modifyItem() {
-        System.out.print("Current item name: ");
-        String oldItem = scanner.nextLine();
-        System.out.print("Enter new item: ");
-        String newItem = scanner.nextLine();
-        groceryList.modifyGroceryItem(oldItem, newItem);
-    }
-
-    public static void removeItem() {
-        System.out.print("Enter item name: ");
-        String itemNo = scanner.nextLine();
-        groceryList.removeGroceryItem(itemNo);
-    }
-
-    public static void searchForItem() {
-        System.out.print("Item to search for: ");
-        String searchItem = scanner.nextLine();
-        if(groceryList.onFile(searchItem)) {
-            System.out.println("Found " + searchItem);
+        if (mobilePhone.addNewContact(contact))  {
+            System.out.println("Created new contact: " + contact.getName());
         } else {
-            System.out.println(searchItem + ", not on file.");
+            System.out.println("Failed to create new contact");
         }
-    }
+    };
 
-    public static void processArrayList() {
-        // Another way to copy an ArrayList
-        ArrayList<String> newArray = new ArrayList<String>();
-        newArray.addAll(groceryList.getGroceryList());
+    private static void updateContact() {
+        System.out.print("Enter contact name: ");
+        String oldName = scanner.nextLine();
+        Contact oldContact = mobilePhone.queryContact(oldName);
+        if (oldContact == null) {
+            System.out.println("Contact not found");
+            return;
+        }
+        System.out.print("Enter new name: ");
+        String newName = scanner.nextLine();
+        System.out.print("Enter new number: ");
+        String newNumber = scanner.nextLine();
+        Contact newContact = Contact.createContact(newName, newNumber);
+        if (mobilePhone.updateContact(oldContact,newContact)) {
+            System.out.println("Successfully updated contact");
+        } else {
+            System.out.println("Failed to update contact");
+        }
+    };
 
-        // Yet another way to copy an ArrayList
-        ArrayList<String> nextArray = new ArrayList<String>(groceryList.getGroceryList());
+    private static void deleteContact() {
+        System.out.print("Enter contact name: ");
+        String oldName = scanner.nextLine();
+        Contact oldContact = mobilePhone.queryContact(oldName);
+        if (oldContact == null) {
+            System.out.println("Contact not found");
+            return;
+        }
+        if (mobilePhone.removeContact(oldContact)){
+            System.out.println("Successfully deleted contact");
+        } else {
+            System.out.println("Failed to remove contact");
+        }
+    };
 
-        // Convert ArrayList to a plain vanilla Array
-        String[] myArray = new String[groceryList.getGroceryList().size()];
-        myArray = groceryList.getGroceryList().toArray(myArray);
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private static void findContact() {
+        System.out.print("Enter contact name: ");
+        String oldName = scanner.nextLine();
+        Contact oldContact = mobilePhone.queryContact(oldName);
+        if (oldContact == null) {
+            System.out.println("Contact not found");
+            return;
+        }
+        System.out.println("Name: " + oldContact.getName() + " has number " + oldContact.getPhoneNumber());
+    };
 }
