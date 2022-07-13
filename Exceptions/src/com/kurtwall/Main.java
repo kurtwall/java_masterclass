@@ -1,23 +1,35 @@
 package com.kurtwall;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-//        System.out.println(divideCheck(60, 0));
+//        System.out.println(divideChecked(60, 0));
 //        System.out.println(divideTryCatch(60, 0));
-//        System.out.println(divideNoCheck(60, 0));
+//        System.out.println(divideUnchecked(60, 0));
 
 //        System.out.println("x = " + getInt());
-        System.out.println("x = " + getIntChecked());
-
+//        System.out.println("x = " + getIntChecked());
+        System.out.println("x = " + getIntTryCatch());
     }
 
     private static int getInt() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter an integer: ");
         return scanner.nextInt();
+    }
+
+    private static int getIntTryCatch() {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        try {
+            return s.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Caught: " + e);
+            return 0;
+        }
     }
 
     private static int getIntChecked() {
@@ -38,11 +50,11 @@ public class Main {
         return 0;
     }
 
-    private static int divideNoCheck(int x, int y) {
+    private static int divideUnchecked(int x, int y) {
         return x / y;
     }
 
-    private static int divideCheck(int x, int y) {
+    private static int divideChecked(int x, int y) {
         if (y != 0) {
             return x / y;
         } else {
