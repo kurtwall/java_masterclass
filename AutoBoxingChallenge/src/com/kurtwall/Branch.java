@@ -9,46 +9,43 @@ public class Branch {
     public Branch(String name) {
         this.name = name;
         this.customers = new ArrayList<Customer>();
-        System.out.println("Created new branch " + name);
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public ArrayList<Customer> getCustomers() {
-        return this.customers;
+        return customers;
     }
 
-    public void listCustomers(boolean withTransactions) {
-        for (int i = 0; i < customers.size(); i++) {
-            if (!withTransactions) {
-                System.out.println((i+1) + ". " + customers.get(i).getName());
-            } else {
-                System.out.println((i+1) + ". " + customers.get(i).getName() + ": " + customers.get(i).getTransactions());
-            }
+    public boolean newCustomer(String customerName, double initialAmount) {
+        if (findCustomer(customerName) == null) {
+            this.customers.add(new Customer(customerName, initialAmount));
+            return true;
         }
+
+        return false;
     }
 
-    public Customer addCustomer(String name, double initialDeposit) {
-        Customer exists = findCustomer(name);
-        if (exists == null) {
-            Customer customer = new Customer(name, initialDeposit);
-            this.customers.add(customer);
-            return customer;
-        } else {
-            System.out.println("Customer with that name already exists");
-            return null;
+    public boolean addCustomerTransaction(String customerName, double amount) {
+        Customer existingCustomer = findCustomer(customerName);
+        if (existingCustomer != null) {
+            existingCustomer.addTransaction(amount);
+            return true;
         }
+
+        return false;
     }
 
-    private Customer findCustomer(String name) {
+    private Customer findCustomer(String customerName) {
         for (int i = 0; i < this.customers.size(); i++) {
-            Customer customer = this.customers.get(i);
-            if (customer.getName().equals(name)) {
-                return this.customers.get(i);
+            Customer checkedCustomer = this.customers.get(i);
+            if (checkedCustomer.getName().equals(customerName)) {
+                return checkedCustomer;
             }
         }
+
         return null;
     }
 }

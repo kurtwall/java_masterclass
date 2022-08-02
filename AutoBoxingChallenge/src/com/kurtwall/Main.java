@@ -4,31 +4,42 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Bank bank = new Bank("Bank of Kurt");
-        Branch downtownBranch = bank.addBranch("Downtown Branch");
-        Branch mallBranch = bank.addBranch("Mall Branch");
+        Bank bank = new Bank("National Australia Bank");
 
-        Customer joebob = downtownBranch.addCustomer("Joe Bob", 1000.00);
-        joebob.addTransaction(200.00);
-        joebob.addTransaction(1500.00);
-        joebob.addTransaction(100.00);
-        joebob.addTransaction(-60.00);
-        joebob.addTransaction(-50.00);
-        joebob.addTransaction(-40.00);
+        if (bank.addBranch("Adelaide")) {
+            System.out.println("Adelaide branch created");
+        }
 
-        Customer marysue = downtownBranch.addCustomer("Mary Sue", 500.00);
-        marysue.addTransaction(300.00);
-        marysue.addTransaction(-10.00);
-        marysue.addTransaction(-20.00);
-        marysue.addTransaction(-30.00);
+        bank.addCustomer("Adelaide", "Tim", 50.05);
+        bank.addCustomer("Adelaide", "Mike", 175.34);
+        bank.addCustomer("Adelaide", "Percy", 220.12);
 
-        Customer junior = mallBranch.addCustomer("Junior", 100.00);
-        junior.addTransaction(100.00);
-        junior.addTransaction(10000.00);
-        junior.addTransaction(-500.00);
-        junior.addTransaction(-500.00);
+        bank.addBranch("Sydney");
+        bank.addCustomer("Sydney", "Bob", 150.54);
 
-        downtownBranch.listCustomers(true);
-        mallBranch.listCustomers(true);
+        bank.addCustomerTransaction("Adelaide", "Tim", 44.22);
+        bank.addCustomerTransaction("Adelaide", "Tim", 12.44);
+        bank.addCustomerTransaction("Adelaide", "Mike", 1.65);
+
+        bank.listCustomers("Adelaide", true);
+        bank.listCustomers("Sydney", true);
+
+        bank.addBranch("Melbourne");
+
+        if (!bank.addCustomer("Melbourne", "Brian", 5.53)) {
+            System.out.println("Error Melbourne branch does not exist");
+        }
+
+        if (!bank.addBranch("Adelaide")) {
+            System.out.println("Adelaide branch already exists");
+        }
+
+        if (!bank.addCustomerTransaction("Adelaide", "Fergus", 52.33)) {
+            System.out.println("Customer does not exist at branch");
+        }
+
+        if (!bank.addCustomer("Adelaide", "Tim", 12.21)) {
+            System.out.println("Customer Tim already exists");
+        }
     }
 }
