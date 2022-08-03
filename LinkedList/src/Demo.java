@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Scanner;
 
 /**
  * Demonstrate using the LinkedList class
