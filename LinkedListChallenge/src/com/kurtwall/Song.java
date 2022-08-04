@@ -1,19 +1,15 @@
 package com.kurtwall;
 
 public class Song {
-    private String title;
+    private String songTitle;
     private Integer duration;
 
-    public Song(String title, Integer duration) {
-        this.title = title;
+    public Song(String songTitle, Integer duration) {
+        this.songTitle = songTitle;
         this.duration = duration;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public Integer getDuration() {
-        return duration;
+    public String getSongTitle() {
+        return songTitle;
     }
 }
