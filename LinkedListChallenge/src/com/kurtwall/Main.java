@@ -10,10 +10,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        songs.add(new Song("867-5309", 3));
-        songs.add(new Song("Sound of Silence", 4));
-        songs.add(new Song("Hot Legs", 3));
-        songs.add(new Song("Papers Please!", 4));
+//        songs.add(new Song("867-5309", 3));
+//        songs.add(new Song("Sound of Silence", 4));
+//        songs.add(new Song("Hot Legs", 3));
+//        songs.add(new Song("Papers Please!", 4));
         songs.add(new Song("Reagan", 3));
         songs.add(new Song("Working in a Coal Mine", 3));
 
@@ -23,6 +23,7 @@ public class Main {
         playlist.add("Sound of Silence");
         playlist.add("Hot Legs");
         playlist.add("Papers Please!");
+        playlist.add("Reagan");
         playlist.add("Reagan");
         playlist.add("Working in a Coal Mine");
 

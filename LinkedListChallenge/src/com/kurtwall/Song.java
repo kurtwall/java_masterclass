@@ -8,8 +8,4 @@ public class Song {
         this.songTitle = songTitle;
         this.duration = duration;
     }
-
-    public String getSongTitle() {
-        return songTitle;
-    }
 }

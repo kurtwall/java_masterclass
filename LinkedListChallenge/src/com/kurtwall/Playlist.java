@@ -9,10 +9,9 @@ public class Playlist {
     private Integer currentlyPlaying;
 
     public Playlist(String playlistTitle) {
-        System.out.println("➡➡➡➡➡➡➡➡ Creating playlist " + playlistTitle);
         this.playlistTitle = playlistTitle;
         this.playlist = new ArrayList<>();
-        this.currentlyPlaying = -1;
+        this.currentlyPlaying = 0;
     }
 
     public Boolean add(String songTitle) {
@@ -47,7 +46,7 @@ public class Playlist {
         }
     }
 
-    public void playPrevious () {
+    public void playPrevious() {
         if (this.currentlyPlaying == 0) {
             System.out.println("➡➡➡➡➡➡➡➡ At beginning of list");
         } else {
@@ -63,10 +62,20 @@ public class Playlist {
     }
 
     public void removeCurrent() {
-        String songTitle = this.playlist.get(this.currentlyPlaying);
+        ListIterator li = this.playlist.listIterator();
+
+        String songTitle = this.playlist.get(currentlyPlaying);
         System.out.println("➡➡➡➡➡➡➡➡ Removing " + songTitle);
-        this.playlist.remove(this.currentlyPlaying);
-        currentlyPlaying = 0;
+        while (li.hasNext()) {
+            if (li.next() == songTitle) {
+                li.remove();
+                if (this.currentlyPlaying > 0) {
+                    currentlyPlaying--;
+                } else {
+                    currentlyPlaying++;
+                }
+            }
+        }
     }
 
     public void display() {
