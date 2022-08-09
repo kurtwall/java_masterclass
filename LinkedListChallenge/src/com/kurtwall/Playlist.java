@@ -41,9 +41,8 @@ public class Playlist {
         if (this.currentlyPlaying >= this.playlist.size() - 1) {
             System.out.println("➡➡➡➡➡ At end of playlist");
         } else {
-            String songTitle = this.playlist.get(this.currentlyPlaying + 1);
-            System.out.println("➡➡➡➡➡ Now playing " + songTitle);
             this.currentlyPlaying++;
+            System.out.println("➡➡➡➡➡ Now playing: " + nowPlaying());
         }
     }
 
@@ -51,15 +50,13 @@ public class Playlist {
         if (this.currentlyPlaying == 0) {
             System.out.println("➡➡➡➡➡ At beginning of list");
         } else {
-            String songTitle = this.playlist.get(this.currentlyPlaying - 1);
-            System.out.println("➡➡➡➡➡ Now playing " + songTitle);
             this.currentlyPlaying--;
+            System.out.println("➡➡➡➡➡ Now playing: " + nowPlaying());
         }
     }
 
     public void replayCurrent() {
-        String songTitle = this.playlist.get(this.currentlyPlaying);
-        System.out.println("➡➡➡➡➡ Now playing " + songTitle);
+        System.out.println("➡➡➡➡➡ Now playing: " + nowPlaying());
     }
 
     public void removeCurrent() {
@@ -77,6 +74,10 @@ public class Playlist {
                 }
             }
         }
+    }
+
+    public String nowPlaying() {
+        return this.playlist.get(this.currentlyPlaying);
     }
 
     public void display() {

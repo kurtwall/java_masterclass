@@ -1,7 +1,6 @@
 package com.kurtwall;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
 
 public class Album {
     private String albumTitle;
@@ -11,12 +10,13 @@ public class Album {
         this.albumTitle = albumTitle;
         this.songList = new ArrayList<>();
     }
+
     public Album(String albumTitle, ArrayList<Song> songs) {
         this.albumTitle = albumTitle;
         this.songList = songs;
     }
 
     public ArrayList<Song> getSongList() {
-        return songList;
+        return this.songList;
     }
 }

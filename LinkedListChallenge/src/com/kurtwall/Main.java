@@ -27,6 +27,7 @@ public class Main {
         playlist.add("Reagan");
         playlist.add("Working in a Coal Mine");
 
+        System.out.println("➡➡➡➡➡ Now playing " + playlist.nowPlaying());
         printMenu();
         System.out.print("Type selection and press Enter: ");
         Scanner scanner = new Scanner(System.in);
@@ -61,7 +62,7 @@ public class Main {
     }
 
     private static void printMenu() {
-        System.out.println("Available Actions\n" +
+        System.out.println("\nAvailable Actions\n" +
                 "1) Play next song\n" +
                 "2) Play previous song\n" +
                 "3) Replay current song\n" +
