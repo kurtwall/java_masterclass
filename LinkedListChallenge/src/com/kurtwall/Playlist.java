@@ -9,6 +9,7 @@ public class Playlist {
     private Integer currentlyPlaying;
 
     public Playlist(String playlistTitle) {
+        System.out.println("➡➡➡➡➡ Creating playlist " + playlistTitle);
         this.playlistTitle = playlistTitle;
         this.playlist = new ArrayList<>();
         this.currentlyPlaying = 0;
@@ -38,34 +39,34 @@ public class Playlist {
 
     public void playNext() {
         if (this.currentlyPlaying >= this.playlist.size() - 1) {
-            System.out.println("➡➡➡➡➡➡➡➡ At end of playlist");
+            System.out.println("➡➡➡➡➡ At end of playlist");
         } else {
             String songTitle = this.playlist.get(this.currentlyPlaying + 1);
-            System.out.println("➡➡➡➡➡➡➡➡ Now playing " + songTitle);
+            System.out.println("➡➡➡➡➡ Now playing " + songTitle);
             this.currentlyPlaying++;
         }
     }
 
     public void playPrevious() {
         if (this.currentlyPlaying == 0) {
-            System.out.println("➡➡➡➡➡➡➡➡ At beginning of list");
+            System.out.println("➡➡➡➡➡ At beginning of list");
         } else {
             String songTitle = this.playlist.get(this.currentlyPlaying - 1);
-            System.out.println("➡➡➡➡➡➡➡➡ Now playing " + songTitle);
+            System.out.println("➡➡➡➡➡ Now playing " + songTitle);
             this.currentlyPlaying--;
         }
     }
 
     public void replayCurrent() {
         String songTitle = this.playlist.get(this.currentlyPlaying);
-        System.out.println("➡➡➡➡➡➡➡➡ Now playing " + songTitle);
+        System.out.println("➡➡➡➡➡ Now playing " + songTitle);
     }
 
     public void removeCurrent() {
         ListIterator li = this.playlist.listIterator();
 
         String songTitle = this.playlist.get(currentlyPlaying);
-        System.out.println("➡➡➡➡➡➡➡➡ Removing " + songTitle);
+        System.out.println("➡➡➡➡➡ Removing " + songTitle);
         while (li.hasNext()) {
             if (li.next() == songTitle) {
                 li.remove();
