@@ -21,7 +21,7 @@ public class Playlist {
             this.playlist.add(songTitle);
             songExists = true;
         } else {
-            System.out.println("➡➡➡➡➡➡➡➡ " + songTitle + " already on playlist");
+            System.out.println("➡➡➡➡➡ " + songTitle + " already on playlist");
             songExists = false;
         }
         return songExists;
