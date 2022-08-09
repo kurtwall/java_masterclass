@@ -1,10 +1,5 @@
 package com.kurtwall;
 
-/**
- * Model a song
- * @songTitle - Title of song
- * @duration  - Length of song in minutes
- */
 public class Song {
     private String songTitle;
     private Integer duration;
@@ -12,5 +7,13 @@ public class Song {
     public Song(String songTitle, Integer duration) {
         this.songTitle = songTitle;
         this.duration = duration;
+    }
+
+    public String getSongTitle() {
+        return this.songTitle;
+    }
+
+    public Integer getDuration() {
+        return this.duration;
     }
 }

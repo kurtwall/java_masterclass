@@ -9,28 +9,34 @@ public class Playlist {
     private Integer currentlyPlaying;
 
     public Playlist(String playlistTitle) {
-        System.out.println("➡➡➡➡➡ Creating playlist " + playlistTitle);
         this.playlistTitle = playlistTitle;
         this.playlist = new ArrayList<>();
         this.currentlyPlaying = 0;
     }
 
-    public Boolean add(String songTitle) {
-        Boolean songExists;
-        if (findSong(songTitle) == false) {
-            this.playlist.add(songTitle);
-            songExists = true;
-        } else {
-            System.out.println("➡➡➡➡➡ " + songTitle + " already on playlist");
-            songExists = false;
+    public Boolean add(ArrayList<Album> albums, String songTitle) {
+        ListIterator albumListIterator = albums.listIterator();
+
+        // Don't add a dupe
+        if (isDupe(songTitle) == false) {
+            while (albumListIterator.hasNext()) {
+                Album album = (Album) albumListIterator.next();
+                if (album.songExists(songTitle) == true) {
+                    this.playlist.add(songTitle);
+                    return true;
+                }
+            }
+            return false;
         }
-        return songExists;
+        return false;
     }
 
-    private Boolean findSong(String songTitle) {
-        ListIterator li = playlist.listIterator();
-        while (li.hasNext()) {
-            if (li.next() == songTitle) {
+    private Boolean isDupe(String songTitle) {
+        ListIterator playListIterator = playlist.listIterator();
+
+        while (playListIterator.hasNext()) {
+            String song = playListIterator.next().toString();
+            if (song == songTitle) {
                 return true;
             }
         }
@@ -63,7 +69,6 @@ public class Playlist {
         ListIterator li = this.playlist.listIterator();
 
         String songTitle = this.playlist.get(currentlyPlaying);
-        System.out.println("➡➡➡➡➡ Removing " + songTitle);
         while (li.hasNext()) {
             if (li.next() == songTitle) {
                 li.remove();

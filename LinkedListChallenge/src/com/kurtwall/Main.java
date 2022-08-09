@@ -6,27 +6,24 @@ import java.util.Scanner;
 public class Main {
 
     public static Playlist playlist = new Playlist("Drive Time Beats");
-    public static ArrayList<Song> songs = new ArrayList<>();
+    public static ArrayList<Album> albums = new ArrayList<>();
 
     public static void main(String[] args) {
 
-        songs.add(new Song("867-5309", 3));
-        songs.add(new Song("Sound of Silence", 4));
-        songs.add(new Song("Hot Legs", 3));
-        songs.add(new Song("Papers Please!", 4));
-        songs.add(new Song("Reagan", 3));
-        songs.add(new Song("Working in a Coal Mine", 3));
+        Album album = new Album("Kurt's Kustom Album");
+        album.add(new Song("867-5309", 3));
+        album.add(new Song("Sound of Silence", 4));
+        album.add(new Song("Hot Legs", 5));
+        album.add(new Song("Papers Please!", 4));
+        album.add(new Song("Reagan", 6));
+        album.add(new Song("Working in a Coal Mine", 2));
+        albums.add(album);
 
-        Album album = new Album("Self-Titled Album", songs);
-
-        playlist.add("867-5309");
-        playlist.add("Sound of Silence");
-        playlist.add("Hot Legs");
-        playlist.add("Papers Please!");
-        playlist.add("Reagan");
-        playlist.add("Reagan");
-        playlist.add("Working in a Coal Mine");
-        playlist.add("Sleeping in a Soft Bed");
+        playlist.add(albums, "867-5309");
+        playlist.add(albums, "Hot Legs");
+        playlist.add(albums, "Papers Please!");
+        playlist.add(albums, "Reagan");
+        playlist.add(albums, "Working in a Coal Mine");
 
         System.out.println("➡➡➡➡➡ Now playing " + playlist.nowPlaying());
         printMenu();
