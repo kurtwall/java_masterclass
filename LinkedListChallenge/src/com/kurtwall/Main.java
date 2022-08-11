@@ -26,13 +26,14 @@ public class Main {
         playlist.add(albums, "Working in a Coal Mine");
 
         System.out.println("➡➡➡➡➡ Now playing " + playlist.nowPlaying());
-        printMenu();
-        System.out.print("Type selection and press Enter: ");
         Scanner scanner = new Scanner(System.in);
-        Integer choice = scanner.nextInt();
-        scanner.nextLine();
+        Integer choice;
 
-        while (choice != 0) {
+        do {
+            printMenu();
+            System.out.print("Type selection and press Enter: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
             switch (choice) {
                 case 1:
                     playlist.playNext();
@@ -52,11 +53,7 @@ public class Main {
                 default:
                     break;
             }
-            printMenu();
-            System.out.print("Type selection and press Enter: ");
-            choice = scanner.nextInt();
-            scanner.nextLine();
-        }
+        } while ((choice != 0));
     }
 
     private static void printMenu() {

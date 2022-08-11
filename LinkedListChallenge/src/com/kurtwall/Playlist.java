@@ -43,52 +43,67 @@ public class Playlist {
         return false;
     }
 
-    public void playNext() {
+    public Boolean playNext() {
         if (this.currentlyPlaying >= this.playlist.size() - 1) {
             System.out.println("➡➡➡➡➡ At end of playlist");
+            return false;
         } else {
             this.currentlyPlaying++;
             System.out.println("➡➡➡➡➡ Now playing: " + nowPlaying());
+            return true;
         }
     }
 
-    public void playPrevious() {
+    public Boolean playPrevious() {
         if (this.currentlyPlaying == 0) {
             System.out.println("➡➡➡➡➡ At beginning of list");
+            return false;
         } else {
             this.currentlyPlaying--;
             System.out.println("➡➡➡➡➡ Now playing: " + nowPlaying());
+            return true;
         }
     }
 
-    public void replayCurrent() {
+    public Boolean replayCurrent() {
         System.out.println("➡➡➡➡➡ Now playing: " + nowPlaying());
+        return true;
     }
 
-    public void removeCurrent() {
+    public Boolean removeCurrent() {
         ListIterator li = this.playlist.listIterator();
 
-        String songTitle = this.playlist.get(currentlyPlaying);
+        String songTitle = this.playlist.get(this.currentlyPlaying);
         while (li.hasNext()) {
             if (li.next() == songTitle) {
                 li.remove();
                 if (this.currentlyPlaying > 0) {
-                    currentlyPlaying--;
+                    this.currentlyPlaying--;
                 } else {
-                    currentlyPlaying++;
+                    if (playlist.size() == 1) {
+                        this.currentlyPlaying = 0;
+                    } else {
+                        this.currentlyPlaying++;
+                    }
                 }
             }
         }
+        return true;
     }
 
     public String nowPlaying() {
         return this.playlist.get(this.currentlyPlaying);
     }
 
-    public void display() {
+    public Boolean display() {
         ListIterator li = this.playlist.listIterator();
         while (li.hasNext()) {
             System.out.println("* " + li.next());
         }
+        return true;
+    }
+
+    public Integer getSize() {
+        return this.playlist.size();
     }
 }
