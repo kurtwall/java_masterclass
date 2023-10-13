@@ -37,7 +37,6 @@ public class Account {
         } else {
             this.balance -= amount;
             System.out.println("Balance after withdrawing $" + amount + " is $" + this.balance);
-
         }
     }
 
