@@ -29,3 +29,6 @@ out/
 
 # MacOS config
 .DS_Store
+
+# Misc
+Archive/
