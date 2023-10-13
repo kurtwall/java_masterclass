@@ -1,4 +1,4 @@
-public class MethodChallenge {
+public class FirstMethodChallenge {
     public static void main(String[] args) {
         String playerName = "Kurt";
 
@@ -23,17 +23,16 @@ public class MethodChallenge {
     }
 
     public static int calculateHighScorePosition(int playerScore) {
-        int position;
 
+        int position = 4;
         if (playerScore >= 1000) {
             position = 1;
-        } else if (playerScore >= 500 && playerScore < 1000) {
+        } else if (playerScore >= 500) {
             position = 2;
-        } else if (playerScore >= 100 && playerScore < 500) {
+        } else if (playerScore >= 100) {
             position = 3;
-        } else {
-            position = 4;
         }
+
         return position;
     }
 }

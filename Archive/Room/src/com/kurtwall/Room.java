@@ -1,7 +1,5 @@
 package com.kurtwall;
 
-import java.awt.*;
-
 public class Room {
     private Floor theFloor;
     private Ceiling theCeiling;
