@@ -5,14 +5,6 @@ public class Account {
     private String custEmail;
     private String custPhone;
 
-    public void showAcctInfo() {
-        System.out.println("Name   : " + this.name);
-        System.out.println("Acct # : " + this.number);
-        System.out.println("Balance: " + this.balance);
-        System.out.println("Phone  : " + this.custPhone);
-        System.out.println("Email  : " + this.custEmail);
-    }
-
     public Account() {
         System.out.println("Empty constructor called");
     }
@@ -33,11 +25,19 @@ public class Account {
 
     public void withdraw(double amount) {
         if (this.balance - amount < 0) {
-            System.out.println("This withdrawal would overdraw your account. Balance is: " + this.balance);
+            System.out.println("Withdrawing $" + amount + " would overdraw your account. Balance is: " + this.balance);
         } else {
             this.balance -= amount;
             System.out.println("Balance after withdrawing $" + amount + " is $" + this.balance);
         }
+    }
+
+    public void showAcctInfo() {
+        System.out.println("Name   : " + this.name);
+        System.out.println("Acct # : " + this.number);
+        System.out.println("Balance: " + this.balance);
+        System.out.println("Phone  : " + this.custPhone);
+        System.out.println("Email  : " + this.custEmail);
     }
 
     public String getAcctNumber() {
