@@ -2,19 +2,19 @@ public class Account {
     private String number;
     private double balance;
     private String name;
-    private String custEmail;
-    private String custPhone;
+    private String email;
+    private String phone;
 
     public Account() {
         System.out.println("Empty constructor called");
     }
 
-    public Account(String name, String number, double balance, String custPhone, String custEmail) {
+    public Account(String name, String number, double balance, String phone, String email) {
         this.name = name;
         this.number = number;
         this.balance = balance;
-        this.custPhone = custPhone;
-        this.custEmail = custEmail;
+        this.phone = phone;
+        this.email = email;
     }
 
     public void deposit(double amount) {
@@ -25,7 +25,7 @@ public class Account {
 
     public void withdraw(double amount) {
         if (this.balance - amount < 0) {
-            System.out.println("Withdrawing $" + amount + " would overdraw your account. Balance is: " + this.balance);
+            System.out.println("Withdrawing $" + amount + " would overdraw your account. Balance is: $" + this.balance);
         } else {
             this.balance -= amount;
             System.out.println("Balance after withdrawing $" + amount + " is $" + this.balance);
@@ -36,8 +36,8 @@ public class Account {
         System.out.println("Name   : " + this.name);
         System.out.println("Acct # : " + this.number);
         System.out.println("Balance: " + this.balance);
-        System.out.println("Phone  : " + this.custPhone);
-        System.out.println("Email  : " + this.custEmail);
+        System.out.println("Phone  : " + this.phone);
+        System.out.println("Email  : " + this.email);
     }
 
     public String getAcctNumber() {
@@ -64,19 +64,19 @@ public class Account {
         this.name = name;
     }
 
-    public String getCustEmail() {
-        return this.custEmail;
+    public String getEmail() {
+        return this.email;
     }
 
-    public void setCustEmail(String custEmail) {
-        this.custEmail = custEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getCustPhone() {
-        return this.custPhone;
+    public String getPhone() {
+        return this.phone;
     }
 
-    public void setCustPhone(String custPhone) {
-        this.custPhone = custPhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
